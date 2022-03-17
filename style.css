@@ -115,7 +115,6 @@ body {
 
 .card {
   box-shadow: 3px 4px 5px #cfc7c7;
-  cursor: pointer;
 }
 
 img {
@@ -131,6 +130,9 @@ footer {
   align-items: center;
 }
 
+.cursor {
+   cursor: initial;
+}
 /*
 modif/add ludo
 */
