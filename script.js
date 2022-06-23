@@ -1,3 +1,14 @@
+let cardShowed = [];
+let randomNumberArray = [];
+let oneCard;
+let hiddenSection = document.querySelector('.container-card');
+let button = document.querySelector('.btn-success');
+let active;
+let card1;
+let card2;
+let number1;
+let number2;
+
 //Mise en place de la navbar en responsive designe version mobile 768px
 const link = document.querySelector('.link');
 const link1Animation = document.querySelector('.link1animation');
@@ -20,522 +31,94 @@ link1.addEventListener('click', () => {
   }
 })
 
-//Déclanchement du timer/Initialisation du jeu
+//boucles pour afficher les cards dans notre section container-card
+for (let i = 1; i <= 5; i++) {
+  const element = document.createElement('div');
+  element.setAttribute('class','row bloc-card');
+  for (let f = 1; f <= 6; f++) {
+    const element2 = document.createElement('div');
+    element2.setAttribute('class', 'card p-0 m-1 col');
+    element.appendChild(element2);
+    const img = document.createElement('img');
+    img.setAttribute('src', 'images/Capture d’écran js2.png')
+    img.setAttribute('id', 'hiddenCard')
+    element2.appendChild(img)
+  }
+  hiddenSection.appendChild(element);
+}
 
-const startGame = document.querySelector('.btn-success');
-  function newGame(){
-    random();
-    startTimer();
-    arrayCards.forEach(item => {
-      item.style.cursor = 'pointer';
-    })
+//variable pour recuperer toutes nos card hidden
+let hiddenCard = document.querySelectorAll("#hiddenCard");
 
-   // var arr = { "un" : 1, "deux" : 2, "trois": 3 };
-
-    // arrayCards.forEach(item => {
-    //   for (let i = 0; i < 2; i++) {
-    //     for(let y = 0; y < 2; y++) {
-    //       item.addEventListener('click' , () => {
-    //         if (cardt[y]) {
-    //           item.innerHTML = '<img src="/images/image_'+ number[i] +'.png" alt="card1" />';
-    //           cardt[y] = false
-    //         } else {
-    //           item.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-    //           cardt[y] = true
-    //         }
-    //         console.log(number1);
-    //       })
-    //     }
+//fonction pour generer un tableau où l'on stocke nos numeros aleatoires
+function randomNumbers() {
+  for (let i = 0; i < 250; i++) {
+    let added1 = false;
+    numberRandom = Math.floor(Math.random() * 30) + 1;
+    do {
+      if (!randomNumberArray.includes(numberRandom)) {
+              
+        randomNumberArray.push(numberRandom);
+        added1 = true;
+      }
+    } while ((added1 = false));
+  }
         
-    //   }
-    // })
-    let cardt = [1,2];
-    let number = [1,2]
-    arrayCards.forEach(item => {
-      for (var i = 1; i <= 2; i++) {
-        
-          item.addEventListener('click' , () => {
-            if (cardt[i]) {
-              item.innerHTML = '<img src="/images/image_'+ number[i] +'.png" alt="card" />';
-              cardt[i] = false;
-            } else {
-              item.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-              cardt[i] = true;
-            }
-          }
-      )}
-      console.log(number1, cardt1); 
-    })
-    
-
-    // card1.addEventListener('click' , () => {
-    //   if (card1t) {
-    //     card1.innerHTML = '<img src="/images/image_'+ number1 +'.png" alt="card1" />';
-    //     card1t = false
-    //   } else {
-    //     card1.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-    //     card1t = true
-    //   }
-    // })
-    
-    // card2.addEventListener('click' , () => {
-    //   if (card2t) {
-    //     card2.innerHTML = '<img src="/images/image_'+ number2 +'.png" alt="card1" />';
-    //     card2t = false;
-    //   } else {
-    //     card2.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-    //     card2t = true;
-    //   }
-    // })
-    
-    card3.addEventListener('click' , () => {
-      if (card3t) {
-        card3.innerHTML = '<img src="/images/image_'+ number3 +'.png" alt="card1" />';
-        card3t = false;
-      } else {
-        card3.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card3t = true;
-      }
-    })
-    
-    card4.addEventListener('click' , () => {
-      if (card4t) {
-        card4.innerHTML = '<img src="/images/image_'+ number4 +'.png" alt="card1" />';
-        card4t = false;
-      } else {
-        card4.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card4t = true;
-      }
-    })
-    
-    card5.addEventListener('click' , () => {
-      if (card5t) {
-        card5.innerHTML = '<img src="/images/image_'+ number5 +'.png" alt="card1" />';
-        card5t = false;
-      } else {
-        card5.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card5t = true;
-      }
-    })
-    
-    card6.addEventListener('click' , () => {
-      if (card6t) {
-        card6.innerHTML = '<img src="/images/image_'+ number6 +'.png" alt="card1" />';
-        card6t = false;
-      } else {
-        card6.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card6t = true;
-      }
-    })
-    
-    card7.addEventListener('click' , () => {
-      if (card7t) {
-        card7.innerHTML = '<img src="/images/image_'+ number7 +'.png" alt="card1" />';
-        card7t = false;
-      } else {
-        card7.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card7t = true;
-      }
-    })
-    
-    card8.addEventListener('click' , () => {
-      if (card8t) {
-        card8.innerHTML = '<img src="/images/image_'+ number8 +'.png" alt="card1" />';
-        card8t = false;
-      } else {
-        card8.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card8t = true;
-      }
-    })
-    
-    card9.addEventListener('click' , () => {
-      if (card9t) {
-        card9.innerHTML = '<img src="/images/image_'+ number9 +'.png" alt="card1" />';
-        card9t = false;
-      } else {
-        card9.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card9t = true;
-      }
-    })
-    
-    card10.addEventListener('click' , () => {
-      if (card10t) {
-        card10.innerHTML = '<img src="/images/image_'+ number10 +'.png" alt="card1" />';
-        card10t = false;
-      } else {
-        card10.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card10t = true;
-      }
-    })
-    
-    card11.addEventListener('click' , () => {
-      if (card11t) {
-        card11.innerHTML = '<img src="/images/image_'+ number11 +'.png" alt="card1" />';
-        card11t = false;
-      } else {
-        card11.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card11t = true;
-      }
-    })
-    
-    card12.addEventListener('click' , () => {
-      if (card12t) {
-        card12.innerHTML = '<img src="/images/image_'+ number12 +'.png" alt="card1" />';
-        card12t = false;
-      } else {
-        card12.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card12t = true;
-      }
-    })
-    
-    card13.addEventListener('click' , () => {
-      if (card13t) {
-        card13.innerHTML = '<img src="/images/image_'+ number13 +'.png" alt="card1" />';
-        card13t = false;
-      } else {
-        card13.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card13t = true;
-      }
-    })
-    
-    card14.addEventListener('click' , () => {
-      if (card14t) {
-        card14.innerHTML = '<img src="/images/image_'+ number14 +'.png" alt="card1" />';
-        card14t = false;
-      } else {
-        card14.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card14t = true;
-      }
-    })
-    
-    card15.addEventListener('click' , () => {
-      if (card15t) {
-        card15.innerHTML = '<img src="/images/image_'+ number15 +'.png" alt="card1" />';
-        card15t = false;
-      } else {
-        card15.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card15t = true;
-      }
-    })
-    
-    card16.addEventListener('click' , () => {
-      if (card16t) {
-        card16.innerHTML = '<img src="/images/image_'+ number16 +'.png" alt="card1" />';
-        card16t = false;
-      } else {
-        card16.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card16t = true;
-      }
-    })
-    
-    card17.addEventListener('click' , () => {
-      if (card17t) {
-        card17.innerHTML = '<img src="/images/image_'+ number17 +'.png" alt="card1" />';
-        card17t = false;
-      } else {
-        card17.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card17t = true;
-      }
-    })
-    
-    card18.addEventListener('click' , () => {
-      if (card18t) {
-        card18.innerHTML = '<img src="/images/image_'+ number18 +'.png" alt="card1" />';
-        card18t = false;
-      } else {
-        card18.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card18t = true;
-      }
-    })
-    
-    card19.addEventListener('click' , () => {
-      if (card19t) {
-        card19.innerHTML = '<img src="/images/image_'+ number19 +'.png" alt="card1" />';
-        card19t = false;
-      } else {
-        card19.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card19t = true;
-      }
-    })
-    
-    card20.addEventListener('click' , () => {
-      if (card20t) {
-        card20.innerHTML = '<img src="/images/image_'+ number20 +'.png" alt="card1" />';
-        card20t = false;
-      } else {
-        card20.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card20t = true;
-      }
-    })
-    
-    card21.addEventListener('click' , () => {
-      if (card21t) {
-        card21.innerHTML = '<img src="/images/image_'+ number21 +'.png" alt="card1" />';
-        card21t = false;
-      } else {
-        card21.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card21t = true;
-      }
-    })
-    
-    card22.addEventListener('click' , () => {
-      if (card22t) {
-        card22.innerHTML = '<img src="/images/image_'+ number22 +'.png" alt="card1" />';
-        card22t = false;
-      } else {
-        card22.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card22t = true;
-      }
-    })
-    
-    card23.addEventListener('click' , () => {
-      if (card23t) {
-        card23.innerHTML = '<img src="/images/image_'+ number23 +'.png" alt="card1" />';
-        card23t = false;
-      } else {
-        card23.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card23t = true;
-      }
-    })
-    
-    card24.addEventListener('click' , () => {
-      if (card24t) {
-        card24.innerHTML = '<img src="/images/image_'+ number24 +'.png" alt="card1" />';
-        card24t = false;
-      } else {
-        card24.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card24t = true;
-      }
-    })
-    
-    card25.addEventListener('click' , () => {
-      if (card25t) {
-        card25.innerHTML = '<img src="/images/image_'+ number25 +'.png" alt="card1" />';
-        card25t = false;
-      } else {
-        card25.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card25t = true;
-      }
-    })
-    
-    card26.addEventListener('click' , () => {
-      if (card26t) {
-        card26.innerHTML = '<img src="/images/image_'+ number26 +'.png" alt="card1" />';
-        card26t = false;
-      } else {
-        card26.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card26t = true;
-      }
-    })
-    
-    card27.addEventListener('click' , () => {
-      if (card27t) {
-        card27.innerHTML = '<img src="/images/image_'+ number27 +'.png" alt="card1" />';
-        card27t = false;
-      } else {
-        card27.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card27t = true;
-      }
-    })
-    
-    card28.addEventListener('click' , () => {
-      if (card28t) {
-        card28.innerHTML = '<img src="/images/image_'+ number28 +'.png" alt="card1" />';
-        card28t = false;
-      } else {
-        card28.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card28t = true;
-      }
-    })
-    
-    card29.addEventListener('click' , () => {
-      if (card29t) {
-        card29.innerHTML = '<img src="/images/image_'+ number29 +'.png" alt="card1" />';
-        card29t = false;
-      } else {
-        card29.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card29t = true;
-      }
-    })
-    
-    card30.addEventListener('click' , () => {
-      if (card30t) {
-        card30.innerHTML = '<img src="/images/image_'+ number30 +'.png" alt="card1" />';
-        card30t = false;
-      } else {
-        card30.innerHTML = '<img src="/images/Capture d’écran js2.png" alt="card" />';
-        card30t = true;
-      }
-    })
-    
-   
-  }
-startGame.addEventListener('click', newGame);
-
-
-
-//constantes pour le fonctionnement du timer
-const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
-
-const COLOR_CODES = {
-  info: {
-    color: "green"
-  },
-  warning: {
-    color: "orange",
-    threshold: WARNING_THRESHOLD
-  },
-  alert: {
-    color: "red",
-    threshold: ALERT_THRESHOLD
-  }
-};
-
-const TIME_LIMIT = 10;
-let timePassed = 0;
-let timeLeft = TIME_LIMIT;
-let timerInterval = null;
-let remainingPathColor = COLOR_CODES.info.color;
-
-//affichage du timer dans le DOM
-document.getElementById("icon").innerHTML = `
-<div class="base-timer">
-  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <g class="base-timer__circle">
-      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-      <path
-        id="base-timer-path-remaining"
-        stroke-dasharray="283"
-        class="base-timer__path-remaining ${remainingPathColor}"
-        d="
-          M 50, 50
-          m -45, 0
-          a 45,45 0 1,0 90,0
-          a 45,45 0 1,0 -90,0
-        "
-      ></path>
-    </g>
-  </svg>
-  <span id="base-timer-label" class="base-timer__label">${formatTime(
-    timeLeft
-  )}</span>
-</div>
-`;
-
-//Fonctions pour le fonctionnement du timer
-function onTimesUp() {
-  clearInterval(timerInterval);
+  randomNumberArray.forEach(e => {
+    oneCard = `images/image_${e}.png`;
+    cardShowed.push(oneCard);
+  }) 
 }
 
-function startTimer() {
-  timerInterval = setInterval(() => {
-    timePassed = timePassed += 1;
-    timeLeft = TIME_LIMIT - timePassed;
-    document.getElementById("base-timer-label").innerHTML = formatTime(
-      timeLeft
-    );
-    setCircleDasharray();
-    setRemainingPathColor(timeLeft);
-
-    if (timeLeft === 0) {
-      onTimesUp();
-    }
-  }, 1000);
+/*je fais une fonction avec un foreach pour appeller toutes mes cards caché, et à l'intérieur 
+je donne un event click pour chaque card, ensuite je fais une condition,
+en premier ca rentre dans le else ca me créé une card et la variable ca passe
+a flase, donc au deuxieme clique ca passe au if (car active est true)
+donc si le number est = à un autre number +-15(car les images identiques ont toujouts +ou moins 15, voir dossier images, pour comprendre).
+Si le number1 est = au num2 donc on a cliqué sur la meme images alors active passe en false, et je pourrais choicir une autre image.
+Si l'image choisi n'est pas bonne on passe dans le dernie else (condition dans la condition principale),
+et on affiche la mauvaise image pendant juste 1 sec*/
+function startPlay() {
+  randomNumbers();
+  console.log(randomNumberArray);
+  hiddenCard.forEach((e , f) => {
+    e.addEventListener("click", () => {
+     if (active) {
+      number1 = randomNumberArray[f];   
+      if (number2 === (number1+15) || number2 === (number1-15) ) {
+        e.src = cardShowed[f]
+        card1 = e
+        active = false
+        randomNumberArray.pop(number2)
+      } else if(number1 === number2) {
+        e.src = 'images/Capture d’écran js2.png';
+        active = false;
+      } else {
+        e.src = cardShowed[f]
+        setTimeout(() => {
+          e.src = 'images/Capture d’écran js2.png';
+        },1000)
+      }  
+     } else {
+      e.src = cardShowed[f];
+      card2 = e;
+      number2 = randomNumberArray[f]; 
+      if (randomNumberArray.indexOf(number2) !== -1) {
+        randomNumberArray.splice(number2,1) 
+      }
+      console.log(number2);
+      console.log(randomNumberArray);
+      active = true
+     }
+    })
+  })  
 }
 
-function formatTime(time) {
-  const minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-
-  return `${minutes}:${seconds}`;
-}
-
-function setRemainingPathColor(timeLeft) {
-  const { alert, warning, info } = COLOR_CODES;
-  if (timeLeft <= alert.threshold) {
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(warning.color);
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(alert.color);
-  } else if (timeLeft <= warning.threshold) {
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.remove(info.color);
-    document
-      .getElementById("base-timer-path-remaining")
-      .classList.add(warning.color);
-  }
-}
-
-function calculateTimeFraction() {
-  const rawTimeFraction = timeLeft / TIME_LIMIT;
-  return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
-}
-
-function setCircleDasharray() {
-  const circleDasharray = `${(
-    calculateTimeFraction() * FULL_DASH_ARRAY
-  ).toFixed(0)} 283`;
-  document
-    .getElementById("base-timer-path-remaining")
-    .setAttribute("stroke-dasharray", circleDasharray);
-}
-
-//récuperation des cards depuis le DOM avec une boucle forEach et destructuring
-let cards =document.querySelectorAll('.card');
-
-
-let arrayCards = [];
-
-cards.forEach(nassim => {
-  arrayCards.push(nassim)
-})
-const [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12,
-card13, card14, card15, card16, card17, card18, card19, card20, card21, card22, card23,
-card24, card25, card26, card27, card28, card29, card30] = arrayCards
-
-arrayCards.forEach(item => {
-  item.style.cursor = 'initial';
-})
+/*avec un event click sur le bouton 'demarrer la partie', on appelle la fonction
+en haut pour demarrer le game*/
+button.addEventListener('click', startPlay);
 
 
 
-//variables pour checker les cards
-let cardt1 = true, cardt2 = true, card3t = true, card4t = true, card5t = true, card6t = true, card7t = true;
-let card8t = true; let card9t = true; let card10t = true; let card11t = true; let card12t = true; let card13t = true; let card14t = true;
-let card15t = true; let card16t = true; let card17t = true; let card18t = true; let card19t = true; let card20t = true; let card21t = true;
-let card22t = true; let card23t = true; let card24t = true; let card25t = true; let card26t = true; let card27t = true; let card28t = true;
-let card29t = true; let card30t = true;
 
-//fonction pour la génération de nombres aléatoires
-function random() {
-  return Math.floor(Math.random()*30+1);
-}
-
-let myArray = [];
-
-for (var i=0 ; i<250 ; i++ ) {
-  let added = false;
- do  {
-    let newRandom = random();
-    if(!myArray.includes(newRandom)) {
-      myArray.push(newRandom);
-      added= true;
-    }
-  }  while (added=false)
-}
-
-
-const [ number1, number2, number3, number4, number5, number6, 
-number7, number8, number9, number10, number11, number12, 
-number13, number14, number15, number16, number17, number18, number19, number20, number21, 
-number22, number23, number24, number25, number26, number27, 
-number28, number29, number30] = myArray 
+  
