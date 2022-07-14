@@ -19,6 +19,7 @@
         <div class="header-logo">
           <img class="logo" alt="logo" src="images/logo.png" />
         </div>
+        <h1 class="h1-bienvenue m-3">Memory Game</h1>
         <div class="theme">
           <p class="paragraphe">Thème</p>
           <div class="main-navbar">
@@ -30,121 +31,22 @@
         </div>
       </div>
     </header>
-    <hr />
     <main>
       <section class="container-title">
-        <h1>Memory Game</h1>
+        <h2 class="h2-bienvenue m-3">Choisissez le niveau du jeu</h2>
+        <button class="beginner btn btn-success fs-3 m-3">Beginner</button>
+        <button class="intermediate btn btn-warning fs-3 m-3">Intermediate</button>
+        <button class="expert btn btn-danger fs-3 m-3">Expert</button>
         <div class="container-timer">
-          <button class="m-3 btn btn-success">Démarrer la partie</button>
-          <div id="icon"></div>
-          <div class="coups">Tentatives : 25</div>
+          <button class="m-3 btn btn-primary fs-5 choice-level-game">Changer de niveau</button>
+          <button class="m-3 btn btn-success fs-5 start-game">Démarrer la partie</button>
+          <button class="m-3 btn btn-success fs-5 start-game2">Redémarrer une nouvelle partie</button>
         </div>
       </section>
-      <section class="container-card m-5">
-        <!--<div class="row bloc-card">
-          <div class="card card1 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card2 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card3 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card4 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card5 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card6 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-        </div>
-        <div class="row bloc-card">
-          <div class="card card7 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card8 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card9 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card10 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card11 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card12 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-        </div>
-        <div class="row bloc-card">
-          <div class="card card13 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card14 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card15 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card16 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card17 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card18 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-        </div>
-        <div class="row bloc-card">
-          <div class="card card19 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card20 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card21 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card22 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card23 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card24 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-        </div>
-        <div class="row bloc-card">
-          <div class="card card25 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card26 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card27 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card28 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card29 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-          <div class="card card30 p-0 m-1 col">
-            <img id="hiddenCard" src="images/Capture d’écran js2.png" alt="card" />
-          </div>
-        </div>-->
+      <section class="container-card ">
       </section>
     </main>
-
-    <footer class="container-fluid bg-dark mt-5 bottom">
+    <footer class="container-fluid bg-dark bottom">
       Copyright © 2022 Taoufik/Ludovic/Nassim/Steven All Rights Reserved
     </footer>
     <script src="script.js"></script>
