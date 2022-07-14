@@ -89,7 +89,7 @@ function startPlay() {
         e.src = cardShowed[f]
         card1 = e
         active = false
-        randomNumberArray.pop(number2)
+        //randomNumberArray.pop(number2)
       } else if(number1 === number2) {
         e.src = 'images/Capture d’écran js2.png';
         active = false;
@@ -103,9 +103,9 @@ function startPlay() {
       e.src = cardShowed[f];
       card2 = e;
       number2 = randomNumberArray[f]; 
-      if (randomNumberArray.indexOf(number2) !== -1) {
-        randomNumberArray.splice(number2,1) 
-      }
+      // if (randomNumberArray.indexOf(number2) !== -1) {
+      //   randomNumberArray.splice(number2,1) 
+      // }
       console.log(number2);
       console.log(randomNumberArray);
       active = true
